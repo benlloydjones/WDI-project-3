@@ -54,7 +54,9 @@
     }
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.18.2",
+    "express": "^4.14.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
