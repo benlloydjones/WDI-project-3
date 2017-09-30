@@ -1,0 +1,12 @@
+<section>
+  <h1>All Bars</h1>
+  <div class="drinkPlaces-index">
+    <div class="row">
+      <div ng-repeat="drinkPlace in drinkPlacesIndex.all" ui-sref="drinkPlacesShow({ id: drinkPlace.id })" class="col-lg-4 col-6">
+        <div class="drinkPlace">
+          <h2>{{ drinkPlace.name }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

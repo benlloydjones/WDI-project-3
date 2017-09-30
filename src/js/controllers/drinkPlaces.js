@@ -34,9 +34,9 @@ function DrinkPlacesShowCtrl(DrinkPlace, $state, DrinkPlaceComment) {
       .delete({ postId: vm.post.id, id: comment.id })
       .$promise
       .then(() => {
-      //locate the comment in the array of comments
+
         const index = vm.post.comments.indexOf(comment);
-        // splice it from the array, take 1 element starting from that index
+
         vm.post.comments.splice(index, 1);
       });
   }
