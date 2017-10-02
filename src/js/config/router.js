@@ -7,15 +7,15 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('drinkPlacesIndex', {
+    .state('login', {
       url: '/',
-      templateUrl: 'js/views/drinkPlaces/index.html',
-      controller: 'DrinkPlacesIndexCtrl as drinkPlacesIndex'
+      templateUrl: '/js/views/login.html',
+      controller: 'LoginCtrl as login'
     })
-    .state('drinkPlacesShow', {
-      url: '/drinkPlaces/:id',
-      templateUrl: 'js/views/drinkPlaces/show.html',
-      controller: 'DrinkPlacesShowCtrl as drinkPlacesShow'
+    .state('drinkPlacesIndex', {
+      url: '/drinkPlaces',
+      templateUrl: '/js/views/drinkPlaces/index.html',
+      controller: 'DrinkPlaceIndexCtrl as drinkPlacesIndex'
     });
 
   $urlRouterProvider.otherwise('/');
