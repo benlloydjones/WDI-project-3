@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const { port, env, dbURI }    = require('./config/environment');
+const { port, dbURI }    = require('./config/environment');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -11,6 +11,7 @@ mongoose.connect(dbURI, { useMongoClient: true });
 
 const bodyParser = require('body-parser');
 const router = require('./config/routes');
+
 
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
