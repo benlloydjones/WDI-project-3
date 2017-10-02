@@ -1,9 +1,10 @@
 const rp = require('request-promise');
-// const jwt = require('jsonwebtoken');
-// const User = require('../models/user');
-// const { secret } =require('./environment');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+const { secret } =require('../config/environment');
 
-function meetup(req, res) {
+function meetup(req, res, next) {
+  let accessToken = null;
   rp({
     method: 'POST',
     url: 'https://secure.meetup.com/oauth2/access',
@@ -13,26 +14,43 @@ function meetup(req, res) {
       grant_type: 'authorization_code',
       redirect_uri: 'http://localhost:7000',
       code: req.body.code
-    }
+    },
+    json: true
   })
-    // .then(token => {
-    //   const thisToken = JSON.parse(token);
-    //   console.log(thisToken.access_token);
-    // });
     .then((response) => {
-      const token = JSON.parse(response);
+      accessToken = response.access_token;
       return rp({
         method: 'GET',
         url: 'https://api.meetup.com/2/member/self/',
         qs: {
-          access_token: token.access_token
+          access_token: accessToken
         },
         json: true
       });
     })
     .then((profile) => {
-      console.log(profile);
-    });
+      return User.findOne({ meetUpId: profile.id })
+        .then((user) => {
+          if(!user) {
+            user = new User({
+              meetUpId: profile.id,
+              accessToken: accessToken,
+              name: profile.name,
+              picture: profile.photo.photo_link
+            });
+          }
+          user.accessToken = accessToken;
+          user.name = profile.name;
+          user.picture = profile.photo.photo_link;
+          return user.save();
+        });
+    })
+    .then((user) => {
+      const payload = { userId: user.id, access_token: user.access_token };
+      const token = jwt.sign(payload, secret, { expiresIn: '1hr'});
+      res.json({ token, message: `Welcome ${user.meetUpId}`});
+    })
+    .catch(next);
 }
 
 module.exports = {

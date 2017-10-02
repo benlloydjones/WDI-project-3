@@ -54,6 +54,7 @@
     }
   },
   "dependencies": {
+    "angular-resource": "^1.6.6",
     "body-parser": "^1.18.2",
     "express": "^4.14.0",
     "request-promise": "^4.2.2"
