@@ -11,12 +11,17 @@ mongoose.connect(dbURI, { useMongoClient: true });
 
 const bodyParser = require('body-parser');
 const router = require('./config/routes');
-
+const errorHandler = require('./lib/errorHandler');
+const customResponses = require('./lib/customResponses');
 
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
+app.use(customResponses);
+
 app.use('/api', router);
 
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express has started on port: ${port}`));
