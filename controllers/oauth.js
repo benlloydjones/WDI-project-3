@@ -38,17 +38,15 @@ function meetup(req, res, next) {
               name: profile.name,
               picture: profile.photo.photo_link
             });
-            console.log(user);
           }
           user.accessToken = accessToken;
           user.name = profile.name;
           user.picture = profile.photo.photo_link;
-          console.log(user);
           return user.save();
         });
     })
     .then((user) => {
-      const payload = { userId: user.meetUpId, access_token: user.access_token };
+      const payload = { userId: user.id, access_token: user.access_token };
       const token = jwt.sign(payload, secret, { expiresIn: '1hr'});
       res.json({ token, message: `Welcome ${user.meetUpId}`});
     })

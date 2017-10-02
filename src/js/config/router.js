@@ -11,6 +11,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       templateUrl: 'js/views/login.html',
       controller: 'LoginCtrl as login'
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'js/views/profile.html',
+      controller: 'ProfileCtrl as profile'
     });
 
   $urlRouterProvider.otherwise('/');
