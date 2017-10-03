@@ -48,7 +48,7 @@ function meetup(req, res, next) {
     .then((user) => {
       const payload = { userId: user.id, access_token: user.access_token };
       const token = jwt.sign(payload, secret, { expiresIn: '1hr'});
-      res.json({ token, message: `Welcome ${user.meetUpId}`});
+      res.json({ token, message: `Welcome ${user.name}`});
     })
     .catch(next);
 }

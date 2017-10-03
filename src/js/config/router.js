@@ -16,6 +16,16 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/profile',
       templateUrl: 'js/views/profile.html',
       controller: 'ProfileCtrl as profile'
+    })
+    .state('usersShow', {
+      url: '/users/:id',
+      templateUrl: 'js/views/users/usersShow.html',
+      controller: 'UsersShowCtrl as usersShow'
+    })
+    .state('usersIndex', {
+      url: '/users',
+      templateUrl: 'js/views/users/usersIndex.html',
+      controller: 'UsersIndexCtrl as usersIndex'
     });
 
   $urlRouterProvider.otherwise('/');

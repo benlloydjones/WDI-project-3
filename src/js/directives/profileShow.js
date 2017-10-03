@@ -7,7 +7,13 @@ function profileShow() {
     restrict: 'E',
     templateUrl: 'js/views/directives/profileShow.html',
     scope: {
-      user: '='
+      user: '=',
+      addFriend: '&',
+      removeFriend: '&',
+      currentUser: '=',
+      currentUserFriends: '=',
+      location: '=',
+      isFriend: '='
     }
   };
 }

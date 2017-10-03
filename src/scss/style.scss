@@ -1,6 +1,10 @@
 // Import all of your scss files here
 .friendsContainer {
+  height: 290px;
+  background-color: tomato;
+  overflow-y: scroll;
+}
+.eventsContainer {
+  background-color: cornflowerblue;
   height: 10px;
-  width: 80%;
-  background-color: grey;
 }
