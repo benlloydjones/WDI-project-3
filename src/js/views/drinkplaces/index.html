@@ -1,0 +1,19 @@
+<section class="l-box">
+  <header>
+    <h1>Pubs</h1>
+    <form ng-submit="drinkPlacesIndex.getPubs()">
+      <input type="text" class="search" ng-model="drinkPlacesIndex.q" placeholder="Search...">
+      <button>Go</button>
+    </form>
+  </header>
+  <div id="map"></div>
+  <ul>
+    <li ng-repeat="drinkPlace in drinkPlacesIndex.results">
+      <img ng-src="{{ drinkPlace.photo }}" />
+      <h2> {{ drinkPlace.name }}</h2>
+      <h2> {{ drinkPlace.opening_hours.open_now }}</h2>
+      <h2> {{ drinkPlace.types.types}}</h2>
+      <h2>Rating: {{ drinkPlace.rating }}/5</h2>
+    </li>
+  </ul>
+</section>
