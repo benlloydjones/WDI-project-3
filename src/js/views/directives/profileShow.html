@@ -1,0 +1,40 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6">
+        <figure class="image">
+          <img src="{{user.picture}}" alt="{{user.name}}">
+        </figure>
+        {{ isFriend }}
+        <div ng-if="location === 'usersShow' && !isFriend">
+          <button class="button is-primary" ng-click="addFriend()">Add friend</button>
+        </div>
+        <div ng-if="location === 'usersShow' && isFriend">
+          <button class="button is-danger" ng-click="removeFriend()">Remove friend</button>
+        </div>
+      </div>
+      <div class="column is-6">
+        <h1 class="title is-2">{{user.name}}</h1>
+
+        <div class="box friendsContainer columns is-multiline">
+
+          <div class="column is-4" ng-repeat="friend in user.friends">
+            <div class="card">
+              <div class="card-image friendListImage">
+                <figure class="image">
+                  <a ui-sref="usersShow({ id: friend.id })"><img src="{{friend.picture}}" alt="{{friend.name}}"></a>
+                </figure>
+              </div>
+              <div class="card-content content">
+                <a ui-sref="usersShow({ id: friend.id })"><p is-small>{{friend.name}}</p></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box columns eventsContainer columns is-multiline">
+
+    </div>
+  </div>
+</section>

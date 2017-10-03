@@ -1,5 +1,12 @@
 // Import all of your scss files here
-
 #map {
   height: 300px;
 }
+.friendsContainer {
+  height: 290px;
+  background-color: tomato;
+  overflow-y: scroll;
+}
+.eventsContainer {
+  background-color: cornflowerblue;
+  height: 10px;

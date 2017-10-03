@@ -12,17 +12,26 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/login.html',
       controller: 'LoginCtrl as login'
     })
-<<<<<<< HEAD
     .state('profile', {
       url: '/profile',
       templateUrl: 'js/views/profile.html',
       controller: 'ProfileCtrl as profile'
-=======
-    .state('drinkPlacesIndex', {
-      url: '/drinkPlaces',
-      templateUrl: '/js/views/drinkPlaces/index.html',
-      controller: 'DrinkPlaceIndexCtrl as drinkPlacesIndex'
->>>>>>> c395ccceb609acb68bfd79b04699e92d6816a4a7
+    })
+    .state('placesIndex', {
+      url: '/places',
+      templateUrl: '/js/views/places/index.html',
+      controller: 'placesIndexCtrl as placesIndex'
+    })
+    .state('usersShow', {
+      url: '/users/:id',
+      templateUrl: 'js/views/users/usersShow.html',
+      controller: 'UsersShowCtrl as usersShow'
+    })
+    .state('usersIndex', {
+      url: '/users',
+      templateUrl: 'js/views/users/usersIndex.html',
+      controller: 'UsersIndexCtrl as usersIndex'
+>>>>>>> profileShow
     });
 
   $urlRouterProvider.otherwise('/');
