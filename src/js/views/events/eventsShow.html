@@ -2,20 +2,31 @@
   <div class="columns">
     <div class="column is-6">
       <img src="{{ eventsShow.event.group.key_photo.highres_link }}" alt="{{ eventsShow.event.name }}">
-      <figure class="image is-1by1">
-        MAP GOES HERE
-      </figure>
+      <section ng-if="eventsShow.event.venue.lat" class="section">
+        <h5 class="title is-5">Location</h5>
+        <google-map class="image is-1by1" center="eventsShow.center" bars="eventsShow.places"></google-map>
+      </section>
+        <section class="section">
+          <div class="box" ng-repeat="place in eventsShow.places">
+            <a ui-sref="placesShow({ googlePlacesId: place.place_id })">{{place.name}}</a>
+          </div>
+        </section>
     </div>
     <div class="column is-6">
       <h3 class="title is-3">{{ eventsShow.event.name }}</h1>
       <p class="subtitle is-5">{{ eventsShow.event.group.name }}</p>
       <p class="is-medium">Time: {{ eventsShow.event.time + eventsShow.event.utc_offset | date: 'short' }}</p>
       <div ng-bind-html="eventsShow.event.description"></div>
-      <div ng-repeat="RSVP in eventsShow.eventRSVP">
-        <img src="{{RSVP.member.photo.thumb_link}}" alt="{{ RSVP.member.name }}">
-        <span ng-if="RSVP.member.id"><p>{{ RSVP.member.name }}</p></span>
+      <section class="section box">
+        <h5 class="title is-5">Attendees</h5>
+        <div class="columns is-multiline">
+          <div class="column is-3" ng-repeat="RSVP in eventsShow.eventRSVP">
+            <img src="{{RSVP.member.photo.thumb_link}}" alt="{{ RSVP.member.name }}">
+            <span ng-if="RSVP.member.id"><p>{{ RSVP.member.name }}</p></span>
+          </div>
+        </div>
+      </section>
 
-      </div>
     </div>
   </div>
 

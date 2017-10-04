@@ -3,6 +3,7 @@ const oauth = require('../controllers/oauth');
 const user = require('../controllers/user');
 const meetUp = require('../controllers/meetUp');
 const comments = require('../controllers/comments');
+const googlePlaces = require('../controllers/googlePlaces');
 // const secureRoute = require('../lib/secureRoute');
 
 router.route('/eventsIndex')
@@ -31,5 +32,7 @@ router.route('/comments')
 router.route('/comments/:id')
   .delete(comments.delete);
 
+router.route('/googlePlaces')
+  .get(googlePlaces.getPlaces);
 
 module.exports = router;
