@@ -12,10 +12,15 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/login.html',
       controller: 'LoginCtrl as login'
     })
-    .state('drinkPlacesIndex', {
-      url: '/drinkPlaces',
-      templateUrl: '/js/views/drinkPlaces/index.html',
-      controller: 'DrinkPlaceIndexCtrl as drinkPlacesIndex'
+    .state('placesIndex', {
+      url: '/places',
+      templateUrl: '/js/views/places/index.html',
+      controller: 'PlacesIndexCtrl as placesIndex'
+    })
+    .state('placesShow', {
+      url: '/places/:googlePlacesId',
+      templateUrl: '/js/views/places/show.html',
+      controller: 'PlacesShowCtrl as placesShow'
     });
 
   $urlRouterProvider.otherwise('/');

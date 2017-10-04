@@ -13,9 +13,9 @@ const bodyParser = require('body-parser');
 mongoose.connect(dbURI, { useMongoClient: true });
 app.use(express.static(`${__dirname}/public`));
 
-app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 app.use(bodyParser.json());
 
 app.use('/api', router);
+app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.listen(port, () => console.log(`Express has started on port: ${port}`));
