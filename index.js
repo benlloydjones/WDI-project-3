@@ -13,15 +13,19 @@ const bodyParser = require('body-parser');
 
 mongoose.connect(dbURI, { useMongoClient: true });
 
+<<<<<<< HEAD
 const errorHandler = require('./lib/errorHandler');
 const customResponses = require('./lib/customResponses');
 
 app.use(cors());
 app.use(express.static(`${__dirname}/public`));
+=======
+>>>>>>> d67715b572b14432abc3831ae3404b39ffe2f085
 app.use(bodyParser.json());
 app.use(customResponses);
 
 app.use('/api', router);
+app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 

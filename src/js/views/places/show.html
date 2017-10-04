@@ -1,0 +1,45 @@
+<h2>
+  <img ng-src="{{ placesShow.place.photo }}">
+  {{ placesShow.place.name }} <br>
+  Overall Rating: {{ placesShow.place.rating }} / 5 <br>
+  Address: {{ placesShow.place.formatted_address }} <br>
+  <p> {{ placesShow.place.opening_hours.open_now }} Closed </p>
+  <p> {{ placesShow.place.opening_hours.open_now }} Open Now! </p>
+
+
+
+</h2>
+
+<div id="map"></div>
+<!-- comment form -->
+
+<div class="comments">
+  <p ng-if="!placesShow.place.comments.length">{{ placesShow.comments.length}} comments</p>
+<ul class="comments__created">
+    <li ng-repeat= "comment in placesShow.place.comments track by $index"></li>
+  <!-- {{ placesShow.comments }} -->
+
+  <div ng-repeat="place in placesShow.comments">
+    <strong>{{place.text}}</strong>       {{place.rating}}
+  </div>
+  <h2>Comments</h2>
+  <form class="comments" ng-submit="placesShow.commentsCreate()">
+    <textarea ng-model="placesShow.newComment.text"></textarea>
+    <!-- <input type="text" ng-model="placesShow.newComment.rating"> -->
+    <select ng-model="placesShow.newComment.rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <button class="button button--full">Comment</button>
+  </form>
+
+  <label>Add comment</label>
+
+
+
+
+
+</div>

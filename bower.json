@@ -19,7 +19,14 @@
     "angular": "^1.5.8",
     "satellizer": "^0.15.5",
     "angular-ui-router": "^1.0.6",
+<<<<<<< HEAD
     "angular-resource": "^1.6.6",
     "bulma": "^0.5.3"
+=======
+    "angular-resource": "^1.6.6"
+  },
+  "resolutions": {
+    "angular": "^1.5.8"
+>>>>>>> d67715b572b14432abc3831ae3404b39ffe2f085
   }
 }
