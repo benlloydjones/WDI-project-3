@@ -11,3 +11,19 @@
   background-color: cornflowerblue;
   height: 10px;
 }
+
+
+#homeImg {
+  height: calc(100vh - 52px);
+  background-image: url("https://www.kentishtowner.co.uk/wp-content/uploads/2014/04/Drinks-at-Grafton.jpg");
+  background-size: cover;
+  background-position: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 60px;
+    color: white;
+    text-shadow: 0px 0px 5px rgba(150, 150, 150, 0.8);
+  }
+}
