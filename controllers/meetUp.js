@@ -21,6 +21,9 @@ function meetUpGetEventProxy(req, res, next) {
   rp({
     url: `https://api.meetup.com/${req.query.group}/events/${req.query.eventId}`,
     method: 'GET',
+    qs: {
+      fields: 'group_key_photo'
+    },
     json: true
   })
     .then(response => res.json(response))
