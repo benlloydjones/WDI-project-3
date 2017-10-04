@@ -12,16 +12,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/login.html',
       controller: 'LoginCtrl as login'
     })
-<<<<<<< HEAD
     .state('profile', {
       url: '/profile',
       templateUrl: 'js/views/profile.html',
       controller: 'ProfileCtrl as profile'
-    })
-    .state('placesIndex', {
-      url: '/places',
-      templateUrl: '/js/views/drinkplaces/index.html',
-      controller: 'placesIndexCtrl as placesIndex'
     })
     .state('usersShow', {
       url: '/users/:id',
@@ -42,7 +36,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/events/:group/:id',
       templateUrl: '/js/views/events/eventsShow.html',
       controller: 'EventsShowCtrl as eventsShow'
-=======
+    })
     .state('placesIndex', {
       url: '/places',
       templateUrl: '/js/views/places/index.html',
@@ -52,7 +46,6 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/places/:googlePlacesId',
       templateUrl: '/js/views/places/show.html',
       controller: 'PlacesShowCtrl as placesShow'
->>>>>>> d67715b572b14432abc3831ae3404b39ffe2f085
     });
 
   $urlRouterProvider.otherwise('/');
