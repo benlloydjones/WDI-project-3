@@ -1,6 +1,6 @@
 const rp = require('request-promise');
 
-function meetUpGetEventsProxy(req, res) {
+function meetUpGetEventsProxy(req, res, next) {
   rp({
     url: 'https://api.meetup.com/find/events',
     method: 'GET',
@@ -9,31 +9,32 @@ function meetUpGetEventsProxy(req, res) {
       access_token: req.query.access_token,
       latitude: req.query.lat,
       longitude: req.query.lon,
-      radius: req.query.radius
+      radius: req.query.radius,
+      fields: 'group_key_photo'
     }
   })
     .then(response => res.json(response))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function meetUpGetEventProxy(req,res) {
+function meetUpGetEventProxy(req, res, next) {
   rp({
     url: `https://api.meetup.com/${req.query.group}/events/${req.query.eventId}`,
     method: 'GET',
     json: true
   })
     .then(response => res.json(response))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function meetUpGetEventRSVPProxy(req, res) {
+function meetUpGetEventRSVPProxy(req, res, next) {
   rp({
     url: `https://api.meetup.com/${req.query.group}/events/${req.query.eventId}/rsvps`,
     method: 'GET',
     json: true
   })
     .then(response => res.json(response))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
 
