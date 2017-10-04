@@ -12,8 +12,6 @@ function UsersShowCtrl($auth, $state, User) {
   vm.logout = logout;
   vm.isFriend = null;
 
-  console.log($state.params);
-
   loadPage();
 
   function loadPage() {

@@ -1,4 +1,23 @@
 <section class="container section">
-  <h1>Events Show</h1>
-  <p>{{eventsShow.event}}</p>
+  <div class="columns">
+    <div class="column is-6">
+      <img src="{{ eventsShow.event.group.key_photo.highres_link }}" alt="{{ eventsShow.event.name }}">
+      <figure class="image is-1by1">
+        MAP GOES HERE
+      </figure>
+    </div>
+    <div class="column is-6">
+      <h3 class="title is-3">{{ eventsShow.event.name }}</h1>
+      <p class="subtitle is-5">{{ eventsShow.event.group.name }}</p>
+      <p class="is-medium">Time: {{ eventsShow.event.time + eventsShow.event.utc_offset | date: 'short' }}</p>
+      <div ng-bind-html="eventsShow.event.description"></div>
+      <div ng-repeat="RSVP in eventsShow.eventRSVP">
+        <img src="{{RSVP.member.photo.thumb_link}}" alt="{{ RSVP.member.name }}">
+        <span ng-if="RSVP.member.id"><p>{{ RSVP.member.name }}</p></span>
+
+      </div>
+    </div>
+  </div>
+
+
 </section>

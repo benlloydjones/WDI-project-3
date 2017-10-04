@@ -1,16 +1,15 @@
 <section class="section container">
-  {{ eventsIndex.all[0].id }} & {{eventsIndex.all[0].group.urlname }}
+  <h1 class=title is-2>Events near you</h1>
   <div class="columns is-multiline">
     <div class="column is-4" ng-repeat="event in eventsIndex.all">
       <div class="card">
         <div class="card-image">
-          <figure class="image">
-            <a ui-sref="eventsShow({ group: event.group.urlname, id: event.id })"><img src="{{events.picture}}" alt="{{event.name}}"></a>
-          </figure>
+          <a ui-sref="eventsShow({ group: event.group.urlname, id: event.id })"><figure class="image is-1by1" style="background-image: url('{{event.group.key_photo.photo_link || 'http://via.placeholder.com/150x150?text=no+image' }}'); background-position: center; background-size: cover;">
+          </figure></a>
         </div>
         <div class="card-content content">
           <a ui-sref="eventsShow({ group: event.group.urlname, id: event.id })"><p class="is-small">{{event.name}}</p></a>
-          <p class="is-small">Time: {{ event.time | date: 'short' }}</p>
+          <p class="is-small">Time: {{ event.time + event.utc_offset | date: 'short' }}</p>
           <p class="is-small">People going: {{ event.yes_rsvp_count }}</p>
         </div>
       </div>

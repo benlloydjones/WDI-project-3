@@ -2,22 +2,22 @@ angular
   .module('pubMeetApp')
   .service('meetUp', MeetUp);
 
-MeetUpIndex.$inject = ['$http'];
+MeetUp.$inject = ['$http'];
 function MeetUp($http) {
-  function getEvents(access_token, lat, lon, radius) {
+  function getEvents(accessToken, lat, lon, radius) {
     return $http
-      .get('http://localhost:4000/api/eventsIndex', { params: { access_token, lat, lon, radius }})
+      .get('/api/eventsIndex', { params: { access_token: accessToken, lat, lon, radius }})
       .then(response => response.data);
   }
   function getEvent(group, eventId) {
     return $http
-      .get('http://localhost:4000/api/eventsShow', { params: { group, eventId }})
+      .get('/api/eventsShow', { params: { group, eventId }})
       .then(response => response.data);
   }
   function getEventRSVP(group, eventId) {
     return $http
-      .get('http://localhost:4000/api/eventsShow/rsvps', { params: { group, eventId }})
-      .then(response => response);
+      .get('/api/eventsShow/rsvps', { params: { group, eventId }})
+      .then(response => response.data);
   }
 
   this.getEvents = getEvents;
