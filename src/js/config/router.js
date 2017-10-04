@@ -19,7 +19,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('placesIndex', {
       url: '/places',
-      templateUrl: '/js/views/places/index.html',
+      templateUrl: '/js/views/drinkplaces/index.html',
       controller: 'placesIndexCtrl as placesIndex'
     })
     .state('usersShow', {
@@ -29,8 +29,18 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('usersIndex', {
       url: '/users',
-      templateUrl: 'js/views/users/usersIndex.html',
+      templateUrl: '/js/views/users/usersIndex.html',
       controller: 'UsersIndexCtrl as usersIndex'
+    })
+    .state('eventsIndex', {
+      url: '/events',
+      templateUrl: '/js/views/events/eventsIndex.html',
+      controller: 'EventsIndexCtrl as eventsIndex'
+    })
+    .state('eventsShow', {
+      url: '/events/:group/:id',
+      templateUrl: '/js/views/events/eventsShow.html',
+      controller: 'EventsShowCtrl as eventsShow'
     });
 
   $urlRouterProvider.otherwise('/');

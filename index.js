@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.plugin(require('./lib/globalToJSON'));
 
+const cors = require('cors');
 const router = require('./config/routes');
 const bodyParser = require('body-parser');
 
@@ -15,6 +16,7 @@ mongoose.connect(dbURI, { useMongoClient: true });
 const errorHandler = require('./lib/errorHandler');
 const customResponses = require('./lib/customResponses');
 
+app.use(cors());
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
 app.use(customResponses);
