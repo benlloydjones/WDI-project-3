@@ -40,12 +40,23 @@ function meetUpGetEventRSVPProxy(req, res, next) {
     .catch(next);
 }
 
+function meetUpUsersEventsProxy (req, res, next) {
+  rp({
+    url: 'https://api.meetup.com/self/events/',
+    method: 'GET',
+    qs: {
+      access_token: req.query.access_token,
+      fields: 'group_photo'
+    },
+    json: true
+  })
+    .then(response => res.json(response))
+    .catch(next);
+}
 
 module.exports = {
   getEvents: meetUpGetEventsProxy,
   getEvent: meetUpGetEventProxy,
-  getEventRSVP: meetUpGetEventRSVPProxy
+  getEventRSVP: meetUpGetEventRSVPProxy,
+  getUsersEvents: meetUpUsersEventsProxy
 };
-
-
-// https://api.meetup.com/howdo-london/events/241877723
