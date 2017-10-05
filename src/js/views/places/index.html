@@ -1,7 +1,7 @@
 <section class="l-box">
   <header>
     <h1>Pubs</h1>
-    <form ng-submit="placesIndex.getPubs()">
+    <form ng-submit="placesIndex.updateSearchParams()">
       <input type="text" class="search" ng-model="placesIndex.q" placeholder="Search By Pub Name or Location">
       <select ng-model="placesIndex.type">
         <option value="bar">Bar</option>
@@ -19,7 +19,7 @@
       <button>Go</button>
     </form>
   </header>
-  <div id="map"></div>
+  <google-map search="placesIndex.searchParams" center="placesIndex.center" result="placesIndex.results"></google-map>
   <ul>
     <li ng-repeat="place in placesIndex.results">
       <img ng-src="{{ place.photo }}" />
