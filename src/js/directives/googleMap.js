@@ -48,7 +48,7 @@ function googleMap() {
         if(infowindow) infowindow.close();
         infowindow = new google.maps.InfoWindow({
           content: `<div class="infowindow">
-              <a ui-sref="placesShow({ googlePlacesId: ${bar.place_id} })"><h3 class="info">${bar.name}</h3></a>
+              <a href="places/${bar.place_id}"><h3 class="info">${bar.name}</h3></a>
             </div>`
         });
         infowindow.open(map, marker);

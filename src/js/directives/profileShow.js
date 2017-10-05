@@ -13,7 +13,8 @@ function profileShow() {
       currentUser: '=',
       currentUserFriends: '=',
       location: '=',
-      isFriend: '='
+      isFriend: '=',
+      events: '='
     }
   };
 }

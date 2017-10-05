@@ -3,6 +3,7 @@
   {{ placesShow.place.name }} <br>
   Overall Rating: {{ placesShow.place.rating }} / 5 <br>
   Address: {{ placesShow.place.formatted_address }} <br>
+  
 
   Opening Hours:<br>
   <p ng-repeat="hours in placesShow.place.opening_hours">{{ hours}}</p>
@@ -15,14 +16,34 @@
 <div id="map"></div>
 <!-- comment form -->
 
-<div class="comments">
+<div class="comments container">
   <p ng-if="!placesShow.place.comments.length">{{ placesShow.comments.length}} comments</p>
 <ul class="comments__created">
     <li ng-repeat= "comment in placesShow.place.comments track by $index"></li>
   <!-- {{ placesShow.comments }} -->
 
-  <div ng-repeat="place in placesShow.comments">
-    <strong>{{place.text}}</strong>       {{place.rating}}
+  <div class="columns">
+    <div class="column is-4">
+      <article class="media" ng-repeat="place in placesShow.comments">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="{{place.user.picture}}">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{place.user.name}}</strong>
+              <br>
+              {{place.text}}
+            </p>
+          </div>
+        </div>
+        <div class="media-right">
+          {{place.rating}}
+        </div>
+      </article>
+    </div>
   </div>
   <h2>Comments</h2>
   <form class="comments" ng-submit="placesShow.commentsCreate()">

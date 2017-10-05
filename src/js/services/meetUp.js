@@ -19,8 +19,14 @@ function MeetUp($http) {
       .get('/api/eventsShow/rsvps', { params: { group, eventId }})
       .then(response => response.data);
   }
+  function getUsersEvents(accessToken) {
+    return $http
+      .get('/api/usersEvents', { params: { access_token: accessToken }})
+      .then(response => response.data);
+  }
 
   this.getEvents = getEvents;
   this.getEvent = getEvent;
   this.getEventRSVP = getEventRSVP;
+  this.getUsersEvents = getUsersEvents;
 }
