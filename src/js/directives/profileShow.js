@@ -14,7 +14,8 @@ function profileShow() {
       currentUserFriends: '=',
       location: '=',
       isFriend: '=',
-      events: '='
+      events: '=',
+      comments: '='
     }
   };
 }
