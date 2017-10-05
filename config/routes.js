@@ -35,4 +35,7 @@ router.route('/comments/:id')
 router.route('/googlePlaces')
   .get(googlePlaces.getPlaces);
 
+router.route('/usersEvents')
+  .get(meetUp.getUsersEvents);
+
 module.exports = router;
