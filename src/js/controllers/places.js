@@ -47,13 +47,14 @@ function PlacesIndexCtrl(filterFilter, $scope) {
 // Place.query()
 // Place.get()
 
-PlacesShowCtrl.$inject = ['$state', '$scope', 'Comment'];
-function PlacesShowCtrl($state, $scope, Comment) {
+PlacesShowCtrl.$inject = ['$state', '$scope', 'Comment', 'User', '$auth'];
+function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
   const vm     = this;
   vm.place = {};
   vm.newComment = {
     googlePlacesId: $state.params.googlePlacesId
   };
+  const { userId } = $auth.getPayload();
 
   vm.comments = Comment.query({ googlePlacesId: $state.params.googlePlacesId });
 
@@ -97,13 +98,27 @@ function PlacesShowCtrl($state, $scope, Comment) {
   }
   function commentsCreate() {
     console.log('form submitted');
-    Comment
-      .save(vm.newComment)
+    User
+      .get({ id: userId })
       .$promise
-      .then((comment) => {
-        vm.comments.push(comment);
-        vm.newComment = {};
-      });
+      .then(user => {
+        vm.newComment.user = user.id;
+        vm.currentUser = user;
+      })
+      .then(() => {
+        console.log(vm.newComment);
+        Comment
+          .save(vm.newComment)
+          .$promise
+          .then(() => {
+            vm.newComment.user = vm.currentUser;
+            vm.comments.push(vm.newComment);
+            vm.newComment = {
+              googlePlacesId: $state.params.googlePlacesId
+            };
+          });
+      })
+      .catch(err => console.log(err));
   }
   vm.commentsCreate = commentsCreate;
 }
