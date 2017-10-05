@@ -28,6 +28,12 @@ User
       accessToken: 100003,
       name: 'Luke Alexander',
       picture: 'https://www.marmelodigital.com/img/luke-img.png'
+    },
+    {
+      meetUpId: 237613045,
+      friends: [],
+      name: 'Ben Lloyd Jones',
+      picture: 'https://secure.meetupstatic.com/photos/member/2/9/b/1/member_271090673.jpeg'
     }
   ])
   .then(entries => {

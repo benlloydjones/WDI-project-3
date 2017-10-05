@@ -29,16 +29,16 @@
       <input type="checkbox" id="menu-toggle" class="is-hidden"/>
 
       <div class="nav-right nav-menu">
-        <a class="nav-item" ui-sref="profile">
+        <a class="nav-item" ui-sref="profile" ng-if="user.identity.isAuthenticated">
           My Profile
         </a>
-        <a class="nav-item" ui-sref="usersIndex">
+        <a class="nav-item" ui-sref="usersIndex" ng-if="user.identity.isAuthenticated">
           Users
         </a>
-        <a class="nav-item" ui-sref="eventsIndex">
+        <a class="nav-item" ui-sref="eventsIndex" ng-if="user.identity.isAuthenticated">
           Find an Event!
         </a>
-        <a class="nav-item" ui-sref="placesIndex">
+        <a class="nav-item" ui-sref="placesIndex" ng-if="user.identity.isAuthenticated">
           Find a Pub!
         </a>
         <a class="nav-item" ui-sref="login"  ng-if="!user.identity.isAuthenticated">
