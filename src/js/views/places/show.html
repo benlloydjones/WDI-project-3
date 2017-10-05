@@ -1,7 +1,7 @@
 <h2>
   <img ng-src="{{ placesShow.place.photo }}">
   {{ placesShow.place.name }} <br>
-  Overall Rating: {{ placesShow.place.rating }} / 5 <br>
+  Overall Rating: {{ placesShow.avgRating }} / 5 <br>
   Address: {{ placesShow.place.formatted_address }} <br>
   <p ng-if="!placesShow.place.opening_hours.open_now">  Closed </p>
   <p ng-if="placesShow.place.opening_hours.open_now"> Open Now! </p>

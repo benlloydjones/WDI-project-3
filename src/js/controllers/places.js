@@ -56,7 +56,7 @@ function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
   };
   const { userId } = $auth.getPayload();
 
-  vm.comments = Comment.query({ googlePlacesId: $state.params.googlePlacesId });
+  vm.comments = null;
 
   // creating map for show page
   const map = new google.maps.Map(document.getElementById('map'), {
@@ -81,6 +81,15 @@ function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       // attaching the place details from google places to the controller so that it's available in the view
       vm.place = place;
+      Comment
+        .query({ googlePlacesId: $state.params.googlePlacesId })
+        .$promise
+        .then((comments => {
+          vm.comments = comments;
+          let totalRating = 0;
+          vm.comments.forEach(comment => totalRating += comment.rating);
+          vm.avgRating = (vm.comments.length > 0 ? totalRating / vm.comments.length : vm.place.rating);
+        }));
 
       // saving the place lat and lng in an object called latLng
       const latLng = place.geometry.location.toJSON();
@@ -106,7 +115,6 @@ function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
         vm.currentUser = user;
       })
       .then(() => {
-        console.log(vm.newComment);
         Comment
           .save(vm.newComment)
           .$promise
