@@ -1,8 +1,13 @@
 <h2>
   <img ng-src="{{ placesShow.place.photo }}">
   {{ placesShow.place.name }} <br>
-  Overall Rating: {{ placesShow.place.avgRating }} / 5 <br>
-  Address: {{ placesShow.place.formatted_address }} <br>
+  <strong>Overall Rating:</strong> {{ placesShow.avgRating }} / 5 <br>
+  <strong>Address:</strong>  {{ placesShow.place.formatted_address }} <br>
+
+
+  <strong>Opening Hours:</strong> <br>
+  <p ng-repeat="hours in placesShow.place.opening_hours">{{ hours}}</p>
+
 
 
   Opening Hours:<br>
