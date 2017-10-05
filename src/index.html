@@ -32,9 +32,6 @@
         <a class="nav-item" ui-sref="profile">
           My Profile
         </a>
-        <a class="nav-item" ui-sref="login">
-          Login
-        </a>
         <a class="nav-item" ui-sref="usersIndex">
           Users
         </a>
@@ -43,6 +40,12 @@
         </a>
         <a class="nav-item" ui-sref="placesIndex">
           Find a Pub!
+        </a>
+        <a class="nav-item" ui-sref="login"  ng-if="!user.identity.isAuthenticated">
+          Login
+        </a>
+        <a class="nav-item" ui-sref="logout"  ng-if="user.identity.isAuthenticated">
+          Logout
         </a>
       </div>
     </div>
