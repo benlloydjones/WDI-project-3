@@ -4,38 +4,38 @@ const user = require('../controllers/user');
 const meetUp = require('../controllers/meetUp');
 const comments = require('../controllers/comments');
 const googlePlaces = require('../controllers/googlePlaces');
-// const secureRoute = require('../lib/secureRoute');
+const secureRoute = require('../lib/secureRoute');
 
 router.route('/eventsIndex')
-  .get(meetUp.getEvents);
+  .get(secureRoute, meetUp.getEvents);
 
 router.route('/eventsShow')
-  .get(meetUp.getEvent);
+  .get(secureRoute, meetUp.getEvent);
 
 router.route('/eventsShow/rsvps')
-  .get(meetUp.getEventRSVP);
+  .get(secureRoute, meetUp.getEventRSVP);
 
 router.route('/users')
-  .get(user.index);
+  .get(secureRoute, user.index);
 
 router.route('/users/:id')
-  .get(user.show)
-  .put(user.update);
+  .get(secureRoute, user.show)
+  .put(secureRoute, user.update);
 
 router.route('/oauth/meetup')
   .post(oauth.meetup);
 
 router.route('/comments')
-  .get(comments.index)
-  .post(comments.create);
+  .get(secureRoute, comments.index)
+  .post(secureRoute, comments.create);
 
 router.route('/comments/:id')
-  .delete(comments.delete);
+  .delete(secureRoute, comments.delete);
 
 router.route('/googlePlaces')
-  .get(googlePlaces.getPlaces);
+  .get(secureRoute, googlePlaces.getPlaces);
 
 router.route('/usersEvents')
-  .get(meetUp.getUsersEvents);
+  .get(secureRoute, meetUp.getUsersEvents);
 
 module.exports = router;

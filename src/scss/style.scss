@@ -1,5 +1,11 @@
 // Import all of your scss files here
-#map {
+body {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+
+.map {
   height: 300px;
 }
 .friendsContainer {
@@ -21,9 +27,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   h1 {
     font-size: 60px;
     color: white;
     text-shadow: 0px 0px 5px rgba(150, 150, 150, 0.8);
   }
+}
+
+#pubIndexImg {
+  max-width: 100%;
+}
+
+#pubsSearch {
+  margin-bottom: 40px;
 }

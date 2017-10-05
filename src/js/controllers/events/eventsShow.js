@@ -2,14 +2,15 @@ angular
   .module('pubMeetApp')
   .controller('EventsShowCtrl', EventsShowCtrl);
 
-EventsShowCtrl.$inject = ['meetUp', '$state', 'User', 'getPlaces', '$scope'];
-function EventsShowCtrl(meetUp, $state, User, getPlaces, $scope) {
+EventsShowCtrl.$inject = ['meetUp', '$state', 'User', '$scope'];
+function EventsShowCtrl(meetUp, $state, User, $scope) {
   const vm = this;
   vm.event = null;
   vm.eventRSVP = null;
   vm.members = [];
   vm.eventRSVP = null;
   vm.meetUpIds = [];
+  vm.searchParams = null;
 
 
   getEvent($state.params.group, $state.params.id);
@@ -21,14 +22,11 @@ function EventsShowCtrl(meetUp, $state, User, getPlaces, $scope) {
       .then(response => {
         vm.event = response;
         vm.center = { lat: vm.event.venue.lat, lng: vm.event.venue.lon };
-        getBars(vm.center.lat, vm.center.lng, 1000, 'bar');
-      });
-  }
-
-  function getBars(lat, lng, radius, type) {
-    getPlaces.getBars(lat, lng, radius, type)
-      .then(response => {
-        vm.places = response;
+        vm.searchParams = {
+          location: vm.center,
+          radius: 1000,
+          type: ['bar']
+        };
       });
   }
 

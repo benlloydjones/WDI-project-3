@@ -1,17 +1,14 @@
 <h2>
   <img ng-src="{{ placesShow.place.photo }}">
   {{ placesShow.place.name }} <br>
-  Overall Rating: {{ placesShow.avgRating }} / 5 <br>
+  Overall Rating: {{ placesShow.place.avgRating }} / 5 <br>
   Address: {{ placesShow.place.formatted_address }} <br>
-  <p ng-if="!placesShow.place.opening_hours.open_now">  Closed </p>
-  <p ng-if="placesShow.place.opening_hours.open_now"> Open Now! </p>
-  <p></p>
 
 
+  Opening Hours:<br>
+  <p ng-repeat="hours in placesShow.place.opening_hours">{{ hours }}</p>
 
-</h2>
-
-<div id="map"></div>
+<google-map details="placesShow.details" result="placesShow.place" center="placesShow.place.geometry.location"></google-map>
 <!-- comment form -->
 
 <div class="comments container">

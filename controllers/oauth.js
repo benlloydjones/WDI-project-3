@@ -12,7 +12,7 @@ function meetup(req, res, next) {
       client_id: process.env.MEETUP_OAUTH_KEY,
       client_secret: process.env.MEETUP_OAUTH_SECRET,
       grant_type: 'authorization_code',
-      redirect_uri: 'http://localhost:7000',
+      redirect_uri: req.body.redirectUri,
       code: req.body.code
     },
     json: true

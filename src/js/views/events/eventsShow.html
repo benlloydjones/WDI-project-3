@@ -4,7 +4,7 @@
       <img src="{{ eventsShow.event.group.key_photo.highres_link }}" alt="{{ eventsShow.event.name }}">
       <section ng-if="eventsShow.event.venue.lat" class="section">
         <h5 class="title is-5">Location</h5>
-        <google-map class="image is-1by1" center="eventsShow.center" bars="eventsShow.places"></google-map>
+        <google-map class="image is-1by1" center="eventsShow.center" result="eventsShow.places" search="eventsShow.searchParams"></google-map>
       </section>
         <section class="section">
           <div class="box" ng-repeat="place in eventsShow.places">
