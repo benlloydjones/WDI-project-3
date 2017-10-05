@@ -2,8 +2,8 @@ angular
   .module('pubMeetApp')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['$auth', '$state', 'User'];
-function UsersShowCtrl($auth, $state, User) {
+UsersShowCtrl.$inject = ['$auth', '$state', 'User', 'Comment'];
+function UsersShowCtrl($auth, $state, User, Comment) {
   const vm = this;
   vm.user = null;
   vm.location = $state.$current.name;
@@ -11,6 +11,7 @@ function UsersShowCtrl($auth, $state, User) {
   vm.removeFriend = removeFriend;
   vm.logout = logout;
   vm.isFriend = null;
+  vm.comments = null;
 
   loadPage();
 
@@ -31,6 +32,16 @@ function UsersShowCtrl($auth, $state, User) {
               findIsFriend();
             });
         }
+      })
+      .then(() => {
+        Comment
+          .query({ user: vm.user.id })
+          .$promise
+          .then(comments => {
+            vm.comments = comments;
+            vm.pubsSet = new Set();
+            vm.comments.forEach(comment => vm.pubs.add(comment.googlePlacesId));
+          });
       })
       .catch(err => console.log('loadPage error: ', err));
   }
