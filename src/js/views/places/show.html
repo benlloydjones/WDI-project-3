@@ -3,8 +3,8 @@
   {{ placesShow.place.name }} <br>
   Overall Rating: {{ placesShow.place.rating }} / 5 <br>
   Address: {{ placesShow.place.formatted_address }} <br>
-  <p> {{ placesShow.place.opening_hours.open_now }} Closed </p>
-  <p> {{ placesShow.place.opening_hours.open_now }} Open Now! </p>
+  <p ng-if="!placesShow.place.opening_hours.open_now">  Closed </p>
+  <p ng-if="placesShow.place.opening_hours.open_now"> Open Now! </p>
 
 
 
