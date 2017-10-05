@@ -1,19 +1,25 @@
 <section class="l-box">
   <header>
     <h1>Pubs</h1>
-    <form ng-submit="placesIndex.getPubs()">
-      <input type="text" class="search" ng-model="placesIndex.q" placeholder="Search...">
-      <button>Go</button>
-    </form>
-  </header>
-  <div id="map"></div>
-  <ul>
-    <li ng-repeat="place in placesIndex.results">
-      <img ng-src="{{ place.photo }}" />
-      <a ui-sref="placesShow({ googlePlacesId: place.place_id })"><h2> {{ place.name }}</h2></a>
-      <h2> {{ place.opening_hours.open_now }}</h2>
-      <h2> {{ place.types.types}}</h2>
-      <h2>Rating: {{ place.rating }}/5</h2>
-    </li>
-  </ul>
-</section>
+    <div id="pubsSearch">
+      <form ng-submit="placesIndex.getPubs()">
+        <input  type="text" class="search input is-medium input is-focused" ng-model="placesIndex.q" placeholder="Search...">
+        <butto> Go </button>
+        </form>
+      </div>
+    </header>
+
+
+
+            <li ng-repeat="place in placesIndex.results">
+
+              <img id="pubIndexImg" ng-src="{{ place.photo }}" />
+              <a ui-sref="placesShow({ googlePlacesId: place.place_id })"><h2> {{ place.name }}</h2></a>
+              <h2> {{ place.opening_hours.open_now }}</h2>
+              <h2> {{ place.types.types}}</h2>
+              <h2>Rating: {{ place.rating }}/5</h2>
+            </li>
+          </ul>
+
+    <div id="map"></div>
+  </section>
