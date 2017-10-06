@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div ng-if="events" class="box columns eventsContainer columns is-multiline">
+    <div ng-if="events" class="columns eventsContainer columns is-multiline">
       <div class="column is-2" ng-repeat="event in events">
         <div class="card">
           <div class="card-image eventsListImage">
@@ -46,12 +46,12 @@
         </div>
       </div>
     </div>
-    <div ng-if="comments" class="box columns commentsContainer columns is-multiline">
+    <div ng-if="comments" class="columns commentsContainer columns is-multiline">
       <div class="column is-2" ng-repeat="comment in comments">
         <div class="card">
           <div class="card-content content">
             <a ui-sref="placesShow({ googlePlacesId: comment.googlePlacesId })"><p is-small>{{comment.googlePlacesName}}</p></a>
-            <p is-small>{{ comment.text }}</p>
+            <p is-small>{{ comment.text | limitTo: 20 }}...</p>
             <p is-small>{{ comment.rating }}</p>
           </div>
         </div>
