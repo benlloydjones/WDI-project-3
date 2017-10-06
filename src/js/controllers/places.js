@@ -28,14 +28,18 @@ PlacesShowCtrl.$inject = ['$state', '$scope', 'Comment', 'User', '$auth'];
 function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
   const vm     = this;
   vm.place = null;
+  let totalRating = null;
   vm.newComment = {
     googlePlacesId: $state.params.googlePlacesId
   };
   const { userId } = $auth.getPayload();
 
   function getAvgRating(comments, place) {
-    const totalRating = comments.reduce((sum, comment) => sum += (comment.rating || 0), 0);
-    return (comments.length > 0 ? totalRating / comments.length : place.rating);
+    totalRating = 0;
+    comments.forEach(comment => {
+      totalRating = comment.rating + totalRating;
+    });
+    return Math.trunc((comments.length > 0 ? totalRating / comments.length : place.rating));
   }
 
   $scope.$watch(() => vm.place, () => {
@@ -45,7 +49,7 @@ function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
       .$promise
       .then(comments => {
         vm.comments = comments;
-        vm.place.avgRating = getAvgRating(comments, vm.place);
+        vm.place.avgRating = getAvgRating(vm.comments, vm.place);
       });
   });
 
@@ -67,6 +71,7 @@ function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
           .save(vm.newComment)
           .$promise
           .then(() => {
+            vm.newComment.rating = parseInt(vm.newComment.rating);
             vm.newComment.user = vm.currentUser;
             vm.comments.push(vm.newComment);
             vm.place.avgRating = getAvgRating(vm.comments, vm.place);
