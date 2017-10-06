@@ -8,6 +8,7 @@ function PlacesIndexCtrl() {
   vm.type = 'bar';
   vm.center = { lat: 51.5, lng: -0.12 };
   vm.results = [];
+  vm.noShow = true;
 
   vm.searchParams = null;
 
