@@ -1,6 +1,6 @@
-<section class="l-box">
+<section class="l-box gap">
   <header>
-    <h1>Pubs</h1>
+    <h1>Places</h1>
     <form ng-submit="placesIndex.updateSearchParams()">
       <input type="text" class="search" ng-model="placesIndex.q" placeholder="Search By Pub Name or Location">
       <select ng-model="placesIndex.type">
@@ -20,13 +20,18 @@
     </form>
   </header>
   <google-map search="placesIndex.searchParams" center="placesIndex.center" result="placesIndex.results"></google-map>
-  <ul>
-    <li ng-repeat="place in placesIndex.results">
-      <img ng-src="{{ place.photo }}" />
+  <ul class="columns is-multiline">
+
+    <li class="column is-one-quarter" ng-repeat="place in placesIndex.results">
+      <figure class="image is-4by3">
+        <img ng-src="{{ place.photo || 'http://via.placeholder.com/150x150?text=no+image' }}" />
+      </figure>
+
       <a ui-sref="placesShow({ googlePlacesId: place.place_id })"><h2> {{ place.name }}</h2></a>
       <h2> {{ place.opening_hours.open_now }}</h2>
       <h2> {{ place.types.types}}</h2>
       <h2>Rating: {{ place.rating }}/5</h2>
+
     </li>
   </ul>
 </section>
