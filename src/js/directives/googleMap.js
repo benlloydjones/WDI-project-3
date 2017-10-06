@@ -13,7 +13,8 @@ function googleMap(googlePlaces) {
       center: '=',
       search: '=?',
       details: '=?',
-      result: '='
+      result: '=',
+      noShow: '=?'
     },
     link($scope, $element) {
       const map = new google.maps.Map($element[0], {
@@ -33,7 +34,10 @@ function googleMap(googlePlaces) {
       $scope.$watch('center', () => {
         if(!$scope.center) return false;
         map.setCenter($scope.center);
-        if(marker) marker.setPosition($scope.center);
+        if(!$scope.noShow) {
+          if(marker) marker.setPosition($scope.center);
+        }
+
       });
 
       $scope.$watch('search', () => {
