@@ -5,7 +5,6 @@
         <figure class="image">
           <img src="{{user.picture}}" alt="{{user.name}}">
         </figure>
-        {{ isFriend }}
         <div ng-if="location === 'usersShow' && !isFriend">
           <button class="button is-primary" ng-click="addFriend()">Add friend</button>
         </div>
@@ -33,7 +32,6 @@
         </div>
       </div>
     </div>
-    <!-- Events List -->
     <div ng-if="events" class="box columns eventsContainer columns is-multiline">
       <div class="column is-2" ng-repeat="event in events">
         <div class="card">
@@ -48,20 +46,16 @@
         </div>
       </div>
     </div>
-    <!-- Comments list -->
-    <!-- <div ng-if="comments" class="box columns commentsContainer columns is-multiline">
+    <div ng-if="comments" class="box columns commentsContainer columns is-multiline">
       <div class="column is-2" ng-repeat="comment in comments">
         <div class="card">
-          <div class="card-image eventsListImage">
-            <figure class="image">
-              <a ui-sref="eventsShow({ group: event.group.urlname ,id: event.id })"><img src="{{ event.group.photo.highres_link }}" alt="{{event.name}}"></a>
-            </figure>
-          </div>
           <div class="card-content content">
-            <a ui-sref="eventsShow({ group: event.group.urlname ,id: event.id })"><p is-small>{{event.name}}</p></a>
+            <a ui-sref="placesShow({ googlePlacesId: comment.googlePlacesId })"><p is-small>{{comment.googlePlacesName}}</p></a>
+            <p is-small>{{ comment.text }}</p>
+            <p is-small>{{ comment.rating }}</p>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </section>
