@@ -1,5 +1,14 @@
 // Import all of your scss files here
+$brand: #F64060;
+
 body {
+}
+
+.gap {
+  margin-top: 30px;
+}
+
+main {
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 40px;
@@ -8,6 +17,7 @@ body {
 .map {
   height: 300px;
 }
+
 .friendsContainer {
   height: 290px;
   background-color: tomato;
@@ -19,6 +29,33 @@ body {
 }
 
 
+.rating {
+  font-size: 25px;
+  color: #F64060;
+}
+
+.textarea {
+  height: 75px;
+  width: 50px;
+}
+
+.comments {
+  overflow-y: scroll;
+  max-height: 285px;
+  padding: 5px;
+}
+
+.rating {
+  margin-bottom: 15px;
+  input[type="radio"] {
+    display: none;
+    &:checked + label {
+      background-color: $brand;
+      color: white;
+      border-color: $brand;
+    }
+  }
+}
 #homeImg {
   height: calc(100vh - 52px);
   background-image: url("https://www.kentishtowner.co.uk/wp-content/uploads/2014/04/Drinks-at-Grafton.jpg");
