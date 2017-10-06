@@ -1,5 +1,8 @@
-// Import all of your scss files here
+@import "../../bower_components/bulma/sass/utilities/initial-variables";
+// modify bulma variables here...
 $brand: #F64060;
+$turquoise: $brand;
+@import "../../bower_components/bulma/bulma";
 
 body {
 }

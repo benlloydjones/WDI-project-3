@@ -35,13 +35,12 @@ function meetup(req, res, next) {
             user = new User({
               meetUpId: profile.id,
               accessToken: accessToken,
-              name: profile.name,
-              picture: profile.photo.photo_link
+              name: profile.name
             });
           }
           user.accessToken = accessToken;
           user.name = profile.name;
-          user.picture = profile.photo.photo_link;
+          if(profile.photo && profile.photo.photo_link) user.picture = profile.photo.photo_link;
           return user.save();
         });
     })

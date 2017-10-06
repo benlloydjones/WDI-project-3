@@ -19,7 +19,10 @@
       <button>Go</button>
     </form>
   </header>
-  <google-map search="placesIndex.searchParams" center="placesIndex.center" result="placesIndex.results" no-show="placesIndex.noShow"></google-map>
+  <google-map search="placesIndex.searchParams" center="placesIndex.center" result="placesIndex.results"></google-map>
+
+  <div class="gap">
+
   <ul class="columns is-multiline">
 
     <li class="column is-one-quarter" ng-repeat="place in placesIndex.results">
@@ -34,4 +37,5 @@
 
     </li>
   </ul>
+    </div>
 </section>
