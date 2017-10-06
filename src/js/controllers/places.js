@@ -59,6 +59,7 @@ function PlacesShowCtrl($state, $scope, Comment, User, $auth) {
       .then(user => {
         vm.newComment.user = user.id;
         vm.currentUser = user;
+        vm.newComment.googlePlaceName = vm.place.name;
       })
       .then(() => {
         Comment

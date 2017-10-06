@@ -1,45 +1,37 @@
-<section class="l-box">
+<section class="l-box gap">
   <header>
-    <h1>Pubs</h1>
-    <div class="pubsSearch">
-      <form ng-submit="placesIndex.getPubs()">
-        <input type="text" class="input focused" ng-model="placesIndex.q" placeholder="Search By Name or Location">
-
-        <div class="field">
-          <div class="control">
-            <div class="select is-primary">
-
-              <select ng-model="placesIndex.type">
-                <option value="bar">Bar</option>
-                <option value="amusement_park">Amusement Park</option>
-                <option value="art_gallery">Galleries</option>
-                <option value="bowling_alley">Bowling</option>
-                <option value="cafe">Cafes</option>
-                <option value="casino">Casino</option>
-                <option value="movie_theater">Movies</option>
-                <option value="night_club">Night Club</option>
-                <option value="park">Park</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="zoo">Zoo</option>
-              </select>
-
-            </div>
-          </div>
-          <button class="button is primary is-outlined">Go</button>
-        </div>
-
-
-      </form>
-    </div>
+    <h1>Places</h1>
+    <form ng-submit="placesIndex.updateSearchParams()">
+      <input type="text" class="search" ng-model="placesIndex.q" placeholder="Search By Pub Name or Location">
+      <select ng-model="placesIndex.type">
+        <option value="bar">Bar</option>
+        <option value="amusement_park">Amusement Park</option>
+        <option value="art_gallery">Galleries</option>
+        <option value="bowling_alley">Bowling</option>
+        <option value="cafe">Cafes</option>
+        <option value="casino">Casino</option>
+        <option value="movie_theater">Movies</option>
+        <option value="night_club">Night Club</option>
+        <option value="park">Park</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="zoo">Zoo</option>
+      </select>
+      <button>Go</button>
+    </form>
   </header>
-  <div id="map"></div>
+  <google-map search="placesIndex.searchParams" center="placesIndex.center" result="placesIndex.results"></google-map>
   <ul class="columns is-multiline">
+
     <li class="column is-one-quarter" ng-repeat="place in placesIndex.results">
-      <img id="pubImg" ng-src="{{ place.photo || 'http://fillmurray.com/200/200' }}"/>
+      <figure class="image is-4by3">
+        <img ng-src="{{ place.photo || 'http://via.placeholder.com/150x150?text=no+image' }}" />
+      </figure>
+
       <a ui-sref="placesShow({ googlePlacesId: place.place_id })"><h2> {{ place.name }}</h2></a>
       <h2> {{ place.opening_hours.open_now }}</h2>
       <h2> {{ place.types.types}}</h2>
       <h2>Rating: {{ place.rating }}/5</h2>
+
     </li>
   </ul>
 </section>
