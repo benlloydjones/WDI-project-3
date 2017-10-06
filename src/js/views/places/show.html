@@ -1,63 +1,155 @@
-<h2>
-  <img ng-src="{{ placesShow.place.photo }}">
-  {{ placesShow.place.name }} <br>
-  Overall Rating: {{ placesShow.place.avgRating }} / 5 <br>
-  Address: {{ placesShow.place.formatted_address }} <br>
+<section class="gap">
+<div class="columns is-multiline">
+  <div class="column is-half">
+    <img ng-src="{{ placesShow.place.photo }}"><br>
+    <strong>{{ placesShow.place.name }}</strong><br>
 
+    <strong>Address: {{ placesShow.place.formatted_address }}</strong>
+    <br>
+    <br>
 
-  Opening Hours:<br>
-  <p ng-repeat="hours in placesShow.place.opening_hours">{{ hours }}</p>
-
-<google-map details="placesShow.details" result="placesShow.place" center="placesShow.place.geometry.location"></google-map>
-<!-- comment form -->
-
-<div class="comments container">
-  <p ng-if="!placesShow.place.comments.length">{{ placesShow.comments.length}} comments</p>
-<ul class="comments__created">
-    <li ng-repeat= "comment in placesShow.place.comments track by $index"></li>
-  <!-- {{ placesShow.comments }} -->
-
-  <div class="columns">
-    <div class="column is-4">
-      <article class="media" ng-repeat="place in placesShow.comments">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="{{place.user.picture}}">
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>{{place.user.name}}</strong>
-              <br>
-              {{place.text}}
-            </p>
-          </div>
-        </div>
-        <div class="media-right">
-          {{place.rating}}
-        </div>
-      </article>
-    </div>
+    <strong ng-if="placesShow.place.opening_hours">Opening Hours:</strong><br>
+    <p ng-repeat="hours in placesShow.place.opening_hours">{{ hours }}</p>
   </div>
-  <h2>Comments</h2>
-  <form class="comments" ng-submit="placesShow.commentsCreate()">
-    <textarea ng-model="placesShow.newComment.text"></textarea>
-    <!-- <input type="text" ng-model="placesShow.newComment.rating"> -->
-    <select ng-model="placesShow.newComment.rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <button class="button button--full">Comment</button>
-  </form>
+  <div class="column is-half">
+    <strong class="rating"><h1 class="title is-3">Overall Rating: {{ placesShow.place.avgRating }} / 5</h1></strong>
+    <h3 class="subtitle is-5" ng-if="!placesShow.place.comments.length">{{ placesShow.comments.length}} comment<span ng-if="placesShow.comments.length !== 1">s</span></h3>
+    <div class="comments">
 
-  <label>Add comment</label>
+      <div ng-repeat="comment in placesShow.comments track by $index">
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+                <!-- <img src="{{ comment.user.picture }}"> -->
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Test Name</strong>
+                  <strong>{{ comment.user.name }}</strong>
+                  <br>
+                  {{ comment.text }}
+                  <br>
+                  {{ comment.rating }}/5
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
 
+        <!-- fake comments -->
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+                <!-- <img src="{{ comment.user.picture }}"> -->
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Test Name</strong>
+                  <strong>{{ comment.user.name }}</strong>
+                  <br>
+                  {{ comment.text }}
+                  <br>
+                  {{ comment.rating }}/5
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+                <!-- <img src="{{ comment.user.picture }}"> -->
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Test Name</strong>
+                  <strong>{{ comment.user.name }}</strong>
+                  <br>
+                  {{ comment.text }}
+                  <br>
+                  {{ comment.rating }}/5
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                  </a>
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+        <!-- end fake comments -->
+      </div>
+    </div>
+    <!-- create comment form -->
+    <h2 class="gap title is-4">Add a comment</h2>
+    <form class="comments" ng-submit="placesShow.commentsCreate()">
+      <textarea class="textarea" ng-model="placesShow.newComment.text"></textarea><br>
+      <!-- <input type="text" ng-model="placesShow.newComment.rating"> -->
+      <div class="rating">
+        <input type="radio" value="1" ng-model="placesShow.newComment.rating" id="one">
+        <label class="button" for="one">1</label>
+        <input type="radio" value="2" ng-model="placesShow.newComment.rating" id="two">
+        <label class="button" for="two">2</label>
+        <input type="radio" value="3" ng-model="placesShow.newComment.rating" id="three">
+        <label class="button" for="three">3</label>
+        <input type="radio" value="4" ng-model="placesShow.newComment.rating" id="four">
+        <label class="button" for="four">4</label>
+        <input type="radio" value="5" ng-model="placesShow.newComment.rating" id="five">
+        <label class="button" for="five">5</label>
+      </div>
+      <button class="button button--full">Comment</button>
+    </form>
+  </div>
+  <div class="column">
 
-
-
-
-</div>
+    <google-map details="placesShow.details" result="placesShow.place" center="placesShow.place.geometry.location"></google-map>
+    <!-- comment form -->
+  </div>
+</section>
