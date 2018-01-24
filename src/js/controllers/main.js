@@ -2,8 +2,8 @@ angular
   .module('pubMeetApp')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$auth', '$transitions', '$rootScope', '$state', '$scope'];
-function MainCtrl($auth, $transitions, $rootScope, $state, $scope) {
+MainCtrl.$inject = ['$auth', '$transitions', '$rootScope', '$state'];
+function MainCtrl($auth, $transitions, $rootScope, $state) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
   vm.logout = logout;

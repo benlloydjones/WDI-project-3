@@ -14,37 +14,39 @@
 </head>
 <body ng-controller="MainCtrl as main">
 
-  <nav class="nav has-shadow" >
-    <div class="container" >
-      <div class="nav-left">
-        <a class="nav-item" ui-sref="home">
-        Pub Meet App
-        </a>
-      </div>
+  <nav class="navbar">
+    <div class="navbar-brand">
 
-      <span class="nav-toggle" ng-class="{ 'is-active': main.menuIsOpen}" ng-click="main.menuIsOpen = !main.menuIsOpen">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
+      <a class="navbar-item" ui-sref="home">
+      Pub Meet App
+      </a>
 
-      <div class="nav-right nav-menu" ng-class="{ 'is-active': main.menuIsOpen }">
-        <a class="nav-item" ui-sref="profile" ng-if="main.isAuthenticated()">
+      <button class="button navbar-burger" data-target="navMenu" ng-class="{ 'is-active': main.menuIsOpen}" ng-click="main.menuIsOpen = !main.menuIsOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+    <div class="navbar-menu" ng-class="{ 'is-active': main.menuIsOpen}" ng-click="main.menuIsOpen = !main.menuIsOpen">
+      <div class="navbar-end" ng-class="{ 'is-active': main.menuIsOpen }">
+        <a class="navbar-item" ui-sref="profile" ng-if="main.isAuthenticated()">
           My Profile
         </a>
-        <a class="nav-item" ui-sref="usersIndex" ng-if="main.isAuthenticated()">
+        <a class="navbar-item" ui-sref="usersIndex" ng-if="main.isAuthenticated()">
           Users
         </a>
-        <a class="nav-item" ui-sref="eventsIndex" ng-if="main.isAuthenticated()">
+        <a class="navbar-item" ui-sref="eventsIndex" ng-if="main.isAuthenticated()">
           Find an Event!
         </a>
-        <a class="nav-item" ui-sref="placesIndex" ng-if="main.isAuthenticated()">
+        <a class="navbar-item" ui-sref="placesIndex" ng-if="main.isAuthenticated()">
           Find a Pub!
         </a>
-        <a class="nav-item" ui-sref="login"  ng-if="!main.isAuthenticated()">
+        <a class="navbar-item" ui-sref="login"  ng-if="!main.isAuthenticated()">
           Login
         </a>
-        <a class="nav-item" ui-sref="logout" href="#" ng-if="main.isAuthenticated()" ng-click="main.logout()">
+        <a class="navbar-item" ui-sref="logout" href="#" ng-if="main.isAuthenticated()" ng-click="main.logout()">
           Logout
         </a>
       </div>
@@ -52,5 +54,6 @@
   </nav>
 
   <main ui-view></main>
+
 </body>
 </html>
